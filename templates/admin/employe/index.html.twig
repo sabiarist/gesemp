@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block title 'Dashboard Admin | Gestion de employes' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Gerer les employes</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Fonction</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for employe in employes %}
+                <tr>
+                    <td>{{ employe.nom }}</td>
+                    <td>{{ employe.prenom }}</td>
+                    <td>{{ employe.fonction }}</td>
+                    <td>
+                        <a href="{{path('admin.employe.edit', {id: employe.id})}}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{path('admin.employe.delete', {id: employe.id})}}" style="display: inline-block"
+                              onsubmit="return confirm('Valider Suppression ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ employe.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{path('admin.employe.new')}}" class="btn btn-primary">Créer Employer</a>
+        </div>
+
+        <h1>Gerer les services</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>libelle</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for service in services %}
+                <tr>
+                    <td>{{ service.libelle }}</td>
+                    <td>
+                        <a href="{{path('admin.service.edit', {id: service.id})}}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{path('admin.service.delete', {id: service.id})}}" style="display: inline-block"
+                              onsubmit="return confirm('Valider Suppression ?')">
+                            <input type="hidden" name="_method" value="DELETEs">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{path('admin.service.new')}}" class="btn btn-primary">Créer Service</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title employe.prenom%}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <h1>{{ employe.nom }} {{ employe.prenom }}</h1>
+                    <h2>{{ employe.fonction }}</h2>
+                    <div class="text-primary" style="font-size: 3rem; font-weight: bold">{{ employe.serviceemp }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

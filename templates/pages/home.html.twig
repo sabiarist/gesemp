@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title 'Bienvenue | Accueil Loren Ipsum' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Voir tous</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis eligendi itaque labore laboriosam laborum maiores minima nesciunt repellat unde voluptatum. Asperiores, excepturi incidunt magni maxime molestiae omnis quod reprehenderit velit?</p>
+    </div>
+
+    <div class="container">
+    <h2>Les employes</h2>
+    <div class="row flex">
+        {% for employe in employes %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ path('employe.show', {id: employe.id, slug: employe.slug}) }}">{{ employe.fonction }}</a>
+                        </h5>
+                        <p class="card-text">
+                            {{ employe.nom }}
+                            ({{ employe.prenom }})
+                        </p>
+                        <div class="text-primary" style="font-weight: bold; font-size: 1rem">
+                            {% if employe.serviceemp == 0  %}
+                                Service : Commerce
+                            {% elseif employe.serviceemp == 1 %}
+                                Service : Divers
+                            {% elseif employe.serviceemp == 2 %}
+                                Service : Informatique
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+    <div class="container">
+        <h2>Les Services</h2>
+        <div class="row flex">
+            {% for service in services %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('service.show', {id: service.id, slug: service.slug}) }}"></a>
+                            </h5>
+                            <p class="card-text">
+                                {{ service.libelle }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
