@@ -26,6 +26,14 @@ Le menu Service permet d’ajouter et de lister les service et le menu Employée
 ##Fonctionnalités en developpement Authentification Admin
 
 
+
+
 <br>
 <img height="300" src="src/images/1.png">
+<img height="300" src="src/images/2.png">
+<img height="300" src="src/images/3.png">
+<img height="300" src="src/images/4.png">
+<img height="300" src="src/images/5.png">
+<img height="300" src="src/images/6.png">
+<img height="300" src="src/images/7.png">
 <br>
