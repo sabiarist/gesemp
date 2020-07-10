@@ -3,7 +3,7 @@ Le menu Service permet d’ajouter et de lister les service et le menu Employée
 
 #FONCTIONNALITES DEVELOPPEES
 
-##Creer le projet
+##Creer le projet Symfony 4.2.12
 
 ##Creer les entity(Employé et Service)
 
